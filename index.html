@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ACL | Arab Competitive League - MVSD</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg-dark: #0a0c10;
+      --card-bg: #12161f;
+      --accent-red: #ff3344;
+      --accent-purple: #7289da;
+      --text-main: #f0f3f8;
+      --text-muted: #94a3b8;
+      --border-color: #1e293b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Tajawal', sans-serif; }
+    body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
+    header { background: linear-gradient(180deg, rgba(10,12,16,0.95) 0%, rgba(18,22,31,0.8) 100%); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border-color); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; }
+    .logo-container { display: flex; align-items: center; gap: 12px; }
+    .logo-img { width: 45px; height: 45px; border-radius: 50%; border: 2px solid var(--accent-red); object-fit: cover; }
+    .logo-text { font-size: 1.6rem; font-weight: 900; letter-spacing: 1px; color: #fff; }
+    .logo-text span { color: var(--accent-red); }
+    .nav-links { display: flex; gap: 20px; list-style: none; }
+    .nav-links a { color: var(--text-main); text-decoration: none; font-weight: 700; transition: 0.3s; }
+    .nav-links a:hover { color: var(--accent-red); }
+    .hero { min-height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 40px 20px; background: radial-gradient(circle at center, rgba(255, 51, 68, 0.15) 0%, transparent 70%); }
+    .hero-badge { background: rgba(255, 51, 68, 0.2); border: 1px solid var(--accent-red); color: var(--accent-red); padding: 6px 16px; border-radius: 20px; font-weight: 700; font-size: 0.9rem; margin-bottom: 20px; }
+    .hero h1 { font-size: 3.5rem; font-weight: 900; margin-bottom: 15px; text-shadow: 0 0 20px rgba(255, 51, 68, 0.4); }
+    .hero p { font-size: 1.2rem; color: var(--text-muted); max-width: 600px; margin-bottom: 30px; }
+    .btn-group { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
+    .btn { padding: 12px 28px; border-radius: 8px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: 0.3s; cursor: pointer; border: none; }
+    .btn-primary { background: var(--accent-red); color: #fff; box-shadow: 0 4px 15px rgba(255, 51, 68, 0.4); }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(255, 51, 68, 0.6); }
+    .btn-secondary { background: #5865F2; color: #fff; box-shadow: 0 4px 15px rgba(88, 101, 242, 0.4); }
+    .btn-secondary:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(88, 101, 242, 0.6); }
+    .quick-copy-bar { margin-top: 25px; background: var(--card-bg); border: 1px solid var(--border-color); padding: 8px 15px; border-radius: 30px; display: flex; align-items: center; gap: 12px; }
+    .quick-copy-bar span { font-family: monospace; color: var(--text-muted); font-size: 0.95rem; }
+    .quick-copy-btn { background: rgba(255,255,255,0.1); border: none; color: #fff; padding: 5px 12px; border-radius: 15px; cursor: pointer; font-size: 0.85rem; font-weight: 700; transition: 0.2s; }
+    .quick-copy-btn:hover { background: var(--accent-red); }
+    .status-section { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 30px; }
+    .status-card { background: var(--card-bg); border: 1px solid var(--border-color); padding: 15px 30px; border-radius: 12px; display: flex; align-items: center; gap: 15px; }
+    .status-card i { font-size: 1.8rem; color: var(--accent-red); }
+    .status-info h4 { font-size: 0.85rem; color: var(--text-muted); }
+    .status-info p { font-size: 1.3rem; font-weight: 900; }
+    .live-dot { width: 10px; height: 10px; background: #10b981; border-radius: 50%; box-shadow: 0 0 8px #10b981; display: inline-block; margin-left: 5px; }
+    .section-title { text-align: center; margin: 60px 0 30px; font-size: 2.2rem; font-weight: 900; position: relative; }
+    .section-title::after { content: ''; display: block; width: 60px; height: 4px; background: var(--accent-red); margin: 10px auto 0; border-radius: 2px; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+    .clans-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 30px; }
+    .clan-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 25px; text-align: center; position: relative; overflow: hidden; transition: 0.3s; }
+    .clan-card:hover { transform: translateY(-5px); border-color: var(--accent-red); }
+    .clan-rank { position: absolute; top: 10px; right: 15px; font-size: 1.5rem; font-weight: 900; color: rgba(255,255,255,0.1); }
+    .clan-card.rank-1 { border-color: #ffd700; background: linear-gradient(145deg, var(--card-bg), rgba(255, 215, 0, 0.05)); }
+    .clan-card.rank-1 .clan-rank { color: #ffd700; opacity: 0.3; }
+    .clan-icon { font-size: 2.5rem; color: var(--accent-red); margin-bottom: 10px; }
+    .clan-name { font-size: 1.5rem; font-weight: 900; }
+    .rules-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+    .rule-card { background: var(--card-bg); border-right: 4px solid var(--accent-red); border-top: 1px solid var(--border-color); border-left: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); border-radius: 8px; padding: 20px; display: flex; gap: 15px; align-items: flex-start; }
+    .rule-icon { background: rgba(255, 51, 68, 0.1); color: var(--accent-red); width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+    .rule-content h3 { font-size: 1.1rem; margin-bottom: 5px; }
+    .rule-content p { color: var(--text-muted); font-size: 0.95rem; }
+    .faq-list { display: flex; flex-direction: column; gap: 15px; max-width: 800px; margin: 0 auto; }
+    .faq-item { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; }
+    .faq-question { font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+    .faq-question i { color: var(--accent-red); }
+    .faq-answer { color: var(--text-muted); font-size: 0.95rem; padding-right: 25px; }
+    .staff-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+    .staff-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; text-align: center; }
+    .staff-avatar { width: 70px; height: 70px; border-radius: 50%; background: #1e293b; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: var(--accent-red); border: 2px solid var(--accent-red); }
+    .staff-role { font-size: 0.8rem; background: rgba(255,51,68,0.2); color: var(--accent-red); padding: 2px 10px; border-radius: 10px; font-weight: 700; display: inline-block; margin-top: 5px; }
+    footer { background: #06080b; border-top: 1px solid var(--border-color); text-align: center; padding: 30px; margin-top: 80px; color: var(--text-muted); font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo-container">
+      <img src="logo.png" alt="ACL Logo" class="logo-img" onerror="this.src='https://via.placeholder.com/45/ff3344/ffffff?text=ACL'">
+      <div class="logo-text">ACL <span>MVSD</span></div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#about">الرئيسية</a></li>
+      <li><a href="#clans">الكلانات</a></li>
+      <li><a href="#rules">القوانين</a></li>
+      <li><a href="#faq">الأسئلة</a></li>
+      <li><a href="#staff">الإدارة</a></li>
+    </ul>
+  </header>
+
+  <section class="hero" id="about">
+    <div class="hero-badge"><span class="live-dot"></span> السيرفر التنافسي الأول لـ MVSD</div>
+    <h1>مجتمع <span>ACL</span> التنافسي</h1>
+    <p>السيرفر العربي التنافسي الخاص بلاعبي MVSD. انضم إلينا للتحدي، السكريمات، والبطولات اليومية!</p>
+    
+    <div class="btn-group">
+      <a href="https://discord.gg/pzjzJFdPx" target="_blank" class="btn btn-secondary">
+        <i class="fab fa-discord"></i> دخول سيرفر الديسكورد
+      </a>
+      <a href="https://discord.com/channels/1504149140802764840/1504165295219151030" target="_blank" class="btn btn-primary">
+        <i class="fas fa-ticket-alt"></i> فتح تكت / التقديم
+      </a>
+    </div>
+
+    <div class="quick-copy-bar">
+      <span>https://discord.gg/pzjzJFdPx</span>
+      <button class="quick-copy-btn" onclick="copyLink()">نسخ الرابط</button>
+    </div>
+
+    <div class="status-section">
+      <div class="status-card">
+        <i class="fas fa-users"></i>
+        <div class="status-info">
+          <h4>إجمالي الأعضاء</h4>
+          <p>350+ عضو</p>
+        </div>
+      </div>
+      <div class="status-card">
+        <i class="fas fa-gamepad"></i>
+        <div class="status-info">
+          <h4>النمط التنافسي</h4>
+          <p>MVSD Clans</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <section id="clans">
+      <h2 class="section-title">أقوى 5 كلانات (Top 5 Clans)</h2>
+      <div class="clans-grid">
+        <div class="clan-card rank-1">
+          <div class="clan-rank">#1</div>
+          <i class="fas fa-crown clan-icon" style="color: #ffd700;"></i>
+          <div class="clan-name">VEX</div>
+        </div>
+        <div class="clan-card">
+          <div class="clan-rank">#2</div>
+          <i class="fas fa-shield-alt clan-icon"></i>
+          <div class="clan-name">TOP</div>
+        </div>
+        <div class="clan-card">
+          <div class="clan-rank">#3</div>
+          <i class="fas fa-fire clan-icon"></i>
+          <div class="clan-name">LIL</div>
+        </div>
+        <div class="clan-card">
+          <div class="clan-rank">#4</div>
+          <i class="fas fa-dragon clan-icon"></i>
+          <div class="clan-name">Valhalla</div>
+        </div>
+        <div class="clan-card">
+          <div class="clan-rank">#5</div>
+          <i class="fas fa-bolt clan-icon"></i>
+          <div class="clan-name">VTX</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="rules">
+      <h2 class="section-title">قوانين وشروط السيرفر</h2>
+      <div class="rules-grid">
+        <div class="rule-card">
+          <div class="rule-icon"><i class="fas fa-user-check"></i></div>
+          <div class="rule-content">
+            <h3>شروط الانضمام</h3>
+            <p>لازم تكون بتلعب لعبة MVSD، وتكون ولد، ولازم تكون من محبين الكبدة!</p>
+          </div>
+        </div>
+        <div class="rule-card">
+          <div class="rule-icon"><i class="fas fa-heart"></i></div>
+          <div class="rule-content">
+            <h3>الاحترام والتنافس الشريف</h3>
+            <p>خلينا محترمين ومن غير شتايم. أي خناقات عقوبتها كيك فوري مع تطبيق عقوبات على الجميع.</p>
+          </div>
+        </div>
+        <div class="rule-card">
+          <div class="rule-icon"><i class="fas fa-bullhorn"></i></div>
+          <div class="rule-content">
+            <h3>منع الترويج</h3>
+            <p>ممنوع الترويج لأعضاء السيرفر سواء في الخاص أو في الشات العام نهائياً.</p>
+          </div>
+        </div>
+        <div class="rule-card">
+          <div class="rule-icon"><i class="fas fa-shopping-cart"></i></div>
+          <div class="rule-content">
+            <h3>البيع والشراء (RMT)</h3>
+            <p>ممنوع البيع والشراء داخل الشات العام. العقوبة: تحذير أولاً، ثم بان أبدي حتى لو أصحابنا.</p>
+          </div>
+        </div>
+        <div class="rule-card">
+          <div class="rule-icon"><i class="fas fa-video-slash"></i></div>
+          <div class="rule-content">
+            <h3>الأدب العام والكاميرا</h3>
+            <p>ممنوع فتح الكام على مشاهد مخلة بالأدب العام لأي سبب كان (عقوبة فورية).</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <h2 class="section-title">الأسئلة الشائعة (FAQ)</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-question"><i class="fas fa-question-circle"></i> إيه هي الشروط الأساسية عشان حسابي يتقبل في ACL؟</div>
+          <div class="faq-answer">تكون عربي، بتلعب MVSD، ولد، وتكون من محبين الكبدة!</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question"><i class="fas fa-question-circle"></i> إزاي أسجل التيم أو الكلان بتاعي في البطولات والـ Scrims؟</div>
+          <div class="faq-answer">بتفتح تكت (Ticket) في الديسكورد والإدارة هترد عليك فوراً وتكمل معاك خطوات التسجيل.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question"><i class="fas fa-question-circle"></i> لو واجهت مشكلة أو ظلم، إزاي أشتكي؟</div>
+          <div class="faq-answer">تقدر تفتح تكت دعم فني مباشرة ويتابع معاك إداري لحل المشكلة فوراً.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="staff">
+      <h2 class="section-title">طاقم الإدارة (Staff)</h2>
+      <div class="staff-grid">
+        <div class="staff-card">
+          <div class="staff-avatar"><i class="fas fa-user-shield"></i></div>
+          <h3>ACL Owner</h3>
+          <span class="staff-role">إدارة السيرفر</span>
+        </div>
+        <div class="staff-card">
+          <div class="staff-avatar"><i class="fas fa-user-cog"></i></div>
+          <h3>Head Admin</h3>
+          <span class="staff-role">مشرف عام</span>
+        </div>
+        <div class="staff-card">
+          <div class="staff-avatar"><i class="fas fa-headset"></i></div>
+          <h3>Ticket Support</h3>
+          <span class="staff-role">دعم التيكتس</span>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>جميع الحقوق محفوظة لـ &copy; 2026 ACL Competitive Community. صُمم لصالح سيرفر ACL MVSD.</p>
+  </footer>
+
+  <script>
+    function copyLink() {
+      navigator.clipboard.writeText("https://discord.gg/pzjzJFdPx");
+      alert("تم نسخ رابط الديسكورد بنجاح!");
+    }
+  </script>
+</body>
+</html>
